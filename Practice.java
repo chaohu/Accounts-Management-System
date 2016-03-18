@@ -28,7 +28,7 @@ class FisWindow {
 		jpan1.setLocation(0, 0);
 		JLabel lb = new JLabel();
 		Icon pic;
-		pic = new ImageIcon("t1.jpg");
+		pic = new ImageIcon("image/t1.jpg");
 		lb.setIcon(pic);
 		jpan1.add(lb);
 		return jpan1;

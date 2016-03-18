@@ -6,7 +6,7 @@ public  class image extends JFrame {
 		Icon pic;
 		String title;
 		for (int i = 1; i <= 5; i++) {
-			pic = new ImageIcon("t" + i + ".jpg");
+			pic = new ImageIcon("image/t" + i + ".jpg");
 			lab[i] = new JLabel();
 			lab[i].setIcon(pic);
 			title = "第" + i + "页";
