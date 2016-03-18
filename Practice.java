@@ -1,6 +1,7 @@
 import java.awt.*;
 import java.awt.Color;
 import java.awt.Image;
+import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
 public  class Practice {
@@ -30,6 +31,7 @@ class FisWindow {
 		cp.add(setjpan1());
 		cp.add(setbunO());
 		cp.add(setbunI());
+		cp.add(setbunE());
 		jfrm.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		jfrm.setVisible(true);
 	}
@@ -64,5 +66,21 @@ class FisWindow {
 		buni.setBorderPainted(false);
 		buni.setLocation(100, 400);
 		return buni;
+	}
+	JButton setbunE() {
+		ImageIcon exit = new ImageIcon("image/exit.png");
+		JButton bune = new JButton( "退出系统", exit);
+		bune.setSize(300, exit.getIconHeight() + 10);
+		bune.setFont(new Font("Dialog", 1, 30));
+		bune.setContentAreaFilled(false);
+		bune.setBorderPainted(false);
+		bune.setLocation(940, 400);
+		bune.setMnemonic(KeyEvent.VK_X);
+		bune.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				System.exit(0);
+			}
+		});
+		return bune;
 	}
 }
