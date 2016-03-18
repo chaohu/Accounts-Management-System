@@ -11,32 +11,41 @@ public  class Practice {
 	}
 }
 class FisWindow {
-	static JFrame jfrm = new JFrame("账单管理系统");
+	static JFrame jfrm = new JFrame("财务管理系统");
 	public void Fissss() {
+		FlowLayout flow = new FlowLayout(FlowLayout.CENTER, 5, 10);
+		ImageIcon bgpic = new ImageIcon("image/background.jpg");
+		JLabel bglab = new JLabel(bgpic);
+		jfrm.getLayeredPane().add(bglab, new Integer(Integer.MIN_VALUE));
+		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+		bgpic.setImage(bgpic.getImage().getScaledInstance(screenSize.width, screenSize.height, Image.SCALE_DEFAULT));
+		bglab.setBounds(0, 0, screenSize.width, screenSize.height);
+		Container cp = jfrm.getContentPane();
+		cp.setLayout(new BorderLayout());
+		((JPanel)cp).setOpaque(false);
 		Image im = (new ImageIcon("image/icon.png")).getImage();
+		cp.setLayout(flow);
 		jfrm.setIconImage(im);
 		GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
 		GraphicsDevice gd = ge.getDefaultScreenDevice();
 		gd.setFullScreenWindow(jfrm);
-		jfrm.add(setjpan1());
+		cp.add(setjpan1());
 		jfrm.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		jfrm.setVisible(true);
 	}
 	JPanel setjpan1() {
 		JPanel jpan1 = new JPanel();
 		jpan1.setSize(100, 100);
-		jpan1.setLocation(0, 0);
-		JLabel lb = new JLabel();
-		Icon pic;
-		pic = new ImageIcon("image/t1.jpg");
-		lb.setIcon(pic);
+		jpan1.setLocation(0, 500);
+		JLabel lb = new JLabel("财务管理系统");
+		lb.setFont(new Font("Dialog", 1, 30));
 		jpan1.add(lb);
 		return jpan1;
 	}
 	JButton setbun() {
 		JButton bun = new JButton("确认");
 		bun.setSize(80, 20);
-		bun.setLocation(20, 200);
+		bun.setLocation(100, 600);
 		return bun;
 	}
 }
