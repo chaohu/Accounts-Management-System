@@ -47,6 +47,24 @@ class FisWindow {
 		jpan1.add(lb);
 		return jpan1;
 	}
+	JButton setbunE() {
+		ImageIcon exit = new ImageIcon("image/exit.png");
+		JButton bune = new JButton( "退出系统", exit);
+		bune.setSize(300, exit.getIconHeight() + 10);
+		bune.setFont(new Font("Dialog", 1, 30));
+		bune.setContentAreaFilled(false);
+		bune.setBorderPainted(false);
+		bune.setLocation(940, 400);
+		bune.setMnemonic(KeyEvent.VK_X);
+		bune.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int n = JOptionPane.showConfirmDialog(null, "确认退出？", "确认对话框", JOptionPane.YES_NO_OPTION);
+				if (n == JOptionPane.YES_OPTION)
+					System.exit(0);
+			}
+		});
+		return bune;
+	}
 	JButton setbunO() {
 		ImageIcon proout = new ImageIcon("image/proout.png");
 		JButton buno = new JButton( "产品出库", proout);
@@ -66,21 +84,5 @@ class FisWindow {
 		buni.setBorderPainted(false);
 		buni.setLocation(100, 400);
 		return buni;
-	}
-	JButton setbunE() {
-		ImageIcon exit = new ImageIcon("image/exit.png");
-		JButton bune = new JButton( "退出系统", exit);
-		bune.setSize(300, exit.getIconHeight() + 10);
-		bune.setFont(new Font("Dialog", 1, 30));
-		bune.setContentAreaFilled(false);
-		bune.setBorderPainted(false);
-		bune.setLocation(940, 400);
-		bune.setMnemonic(KeyEvent.VK_X);
-		bune.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				System.exit(0);
-			}
-		});
-		return bune;
 	}
 }
