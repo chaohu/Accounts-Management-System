@@ -1,5 +1,3 @@
-package Accounts - Management - System;
-
 import java.awt.*;
 import java.awt.Color;
 import java.awt.Image;
