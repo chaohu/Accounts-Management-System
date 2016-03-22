@@ -1,3 +1,5 @@
+package Accounts - Management - System;
+
 import java.awt.*;
 import java.awt.Color;
 import java.awt.Image;
@@ -59,8 +61,9 @@ class FisWindow {
 		bune.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				int n = JOptionPane.showConfirmDialog(null, "确认退出？", "确认对话框", JOptionPane.YES_NO_OPTION);
-				if (n == JOptionPane.YES_OPTION)
+				if (n == JOptionPane.YES_OPTION) {
 					System.exit(0);
+				}
 			}
 		});
 		return bune;
@@ -83,6 +86,13 @@ class FisWindow {
 		buni.setContentAreaFilled(false);
 		buni.setBorderPainted(false);
 		buni.setLocation(100, 400);
+		buni.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				jfrm.setVisible(false);
+				ProStorage prostorage = new ProStorage();
+				prostorage.ProStorage();
+			}
+		});
 		return buni;
 	}
 }
