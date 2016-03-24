@@ -5,36 +5,48 @@ import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
 public  class ProStorage {
-	JFrame jfrm2 = new JFrame("财务管理系统");
-	Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+	JMenuBar jMenuBar1 = new JMenuBar();			//定义菜单栏
+	JMenu GrainIn = new JMenu("谷物入库");		//谷物入库
+	JMenu RiceIn = new JMenu("大米入库");			//大米入库
+	JMenu Variety = new JMenu("品种管理");			//品种管理
+	JMenuItem Return = new JMenuItem("返回");			//返回
+	JTree jTree1 = new JTree();				//定义树形
+	JLabel statusBar = new JLabel();				//表格展示区域
+	JScrollPane jScrollPane2 = new JScrollPane();		//带滚动条的区域
+	JTable jTable1 = new JTable();				//表格
+	TitledBorder titledborder1 = new TitledBorder("");
+	JScrollPane jScrollPane1 = new JScrollPane();		//带滚动条的区域
 	public void ProStorage() {
-		ImageIcon bgpic = new ImageIcon("image/background.jpg");
-		JLabel bglab = new JLabel(bgpic);
-		jfrm2.getLayeredPane().add(bglab, new Integer(Integer.MIN_VALUE));
-		bgpic.setImage(bgpic.getImage().getScaledInstance(screenSize.width, screenSize.height, Image.SCALE_DEFAULT));
-		bglab.setBounds(0, 0, screenSize.width, screenSize.height);
-		Container cp2 = jfrm2.getContentPane();
-		cp2.setLayout(null);
-		((JPanel)cp2).setOpaque(false);
-		Image im = (new ImageIcon("image/icon.png")).getImage();
-		jfrm2.setIconImage(im);
-		GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
-		GraphicsDevice gd = ge.getDefaultScreenDevice();
-		gd.setFullScreenWindow(jfrm2);
-		jfrm2.add(setjpan1());
-		jfrm2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		jfrm2.setVisible(true);
+		try {
+			Main main = new Main();
+			main.cp.removeAll();
+			main.jfrm.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+			main.jfrm.setJMenuBar(jMenuBar1);
+			main.cp.add(statusBar);
+			jbInit();					//自定义窗口初始化函数
+		} catch (Exception exception) {
+			exception.printStackTrace();
+		}
+
 	}
-	JPanel setjpan1() {
-		JPanel jpan1 = new JPanel();
-		jpan1.setSize(screenSize.width, 150);
-		jpan1.setLocation(0, 80);
-		jpan1.setOpaque(false);
-		JLabel lb = new JLabel("财 务 管 理 系 统   ", JLabel.CENTER);
-		lb.setLayout(null);
-		lb.setLocation(0, 0);
-		lb.setFont(new Font("Dialog", 1, 100));
-		jpan1.add(lb);
-		return jpan1;
+	public void jbInit() {
+		setjTable();			//设置表格
+		setstatus();			//设置表格展示区域
+		jMenuBar1.add(Return);	//将父菜单加入菜单栏
+		statusBar.add(jTable1);
+		Return.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Main main =  new Main();
+				main.cp.remove(statusBar);
+				main.jfrm.setJMenuBar(null);
+			}
+		});
+	}
+	public void setstatus() {
+		statusBar.setSize(300, 300);
+		statusBar.setLocation(0, 10);
+	}
+	public void setjTable() {
+		jTable1.setSize(100, 100);
 	}
 }

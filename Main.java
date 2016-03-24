@@ -4,29 +4,26 @@ import java.awt.Image;
 import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
-public  class Practice {
-	public static void main(String[] args) {
-		FisWindow x;
-		x = new FisWindow();
-		x.Fissss();
-	}
-}
-class FisWindow {
+public  class Main {
 	static JFrame jfrm = new JFrame("财务管理系统");
 	Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-	public void Fissss() {
-		ImageIcon bgpic = new ImageIcon("image/background.jpg");
-		JLabel bglab = new JLabel(bgpic);
+	ImageIcon bgpic = new ImageIcon("image/background.jpg");
+	JLabel bglab = new JLabel(bgpic);
+	Container cp = jfrm.getContentPane();
+	Image im = (new ImageIcon("image/icon.png")).getImage();
+	GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+	GraphicsDevice gd = ge.getDefaultScreenDevice();
+	public static void main(String[] args) {
+		new Main();
+		jfrm.setVisible(true);
+	}
+	public Main() {
 		jfrm.getLayeredPane().add(bglab, new Integer(Integer.MIN_VALUE));
 		bgpic.setImage(bgpic.getImage().getScaledInstance(screenSize.width, screenSize.height, Image.SCALE_DEFAULT));
 		bglab.setBounds(0, 0, screenSize.width, screenSize.height);
-		Container cp = jfrm.getContentPane();
 		cp.setLayout(null);
 		((JPanel)cp).setOpaque(false);
-		Image im = (new ImageIcon("image/icon.png")).getImage();
 		jfrm.setIconImage(im);
-		GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
-		GraphicsDevice gd = ge.getDefaultScreenDevice();
 		gd.setFullScreenWindow(jfrm);
 		cp.add(setjpan1());
 		cp.add(setbunO());
@@ -49,7 +46,7 @@ class FisWindow {
 	}
 	JButton setbunE() {
 		ImageIcon exit = new ImageIcon("image/exit.png");
-		JButton bune = new JButton( "退出系统", exit);
+		JButton bune = new JButton( "退出", exit);
 		bune.setSize(300, exit.getIconHeight() + 10);
 		bune.setFont(new Font("Dialog", 1, 30));
 		bune.setContentAreaFilled(false);
@@ -68,7 +65,7 @@ class FisWindow {
 	}
 	JButton setbunO() {
 		ImageIcon proout = new ImageIcon("image/proout.png");
-		JButton buno = new JButton( "产品出库", proout);
+		JButton buno = new JButton( "出库", proout);
 		buno.setSize(300, proout.getIconHeight() + 10);
 		buno.setFont(new Font("Dialog", 1, 30));
 		buno.setContentAreaFilled(false);
@@ -78,7 +75,7 @@ class FisWindow {
 	}
 	JButton setbunI() {
 		ImageIcon soradd = new ImageIcon("image/soradd.png");
-		JButton buni = new JButton( "原料入库", soradd);
+		JButton buni = new JButton( "入库", soradd);
 		buni.setSize(300, soradd.getIconHeight() + 10);
 		buni.setFont(new Font("Dialog", 1, 30));
 		buni.setContentAreaFilled(false);
