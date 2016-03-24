@@ -5,15 +5,18 @@ import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
 public  class ProStorage {
+	Font font = new Font("宋体", Font.PLAIN, 20);
 	JMenuBar jMenuBar1 = new JMenuBar();			//定义菜单栏
-	JMenu GrainIn = new JMenu("谷物入库");		//谷物入库
-	JMenu RiceIn = new JMenu("大米入库");			//大米入库
-	JMenu Variety = new JMenu("品种管理");			//品种管理
+	JMenuItem GrainIn = new JMenuItem("物料入库");		//谷物入库
+	JMenuItem RiceIn = new JMenuItem("大米入库");			//大米入库
+	JMenuItem Variety = new JMenuItem("品种管理");			//品种管理
 	JMenuItem Return = new JMenuItem("返回");			//返回
 	JTree jTree1 = new JTree();				//定义树形
 	JLabel statusBar = new JLabel();				//表格展示区域
 	JScrollPane jScrollPane2 = new JScrollPane();		//带滚动条的区域
-	JTable jTable1 = new JTable();				//表格
+	Object[][] cellData = {{"胡超", "胡娣"}, {"胡明杰", "胡四华"}};
+	String[] columnNames = {"col1", "col2"};
+	JTable jTable1 = new JTable(cellData, columnNames);				//表格
 	TitledBorder titledborder1 = new TitledBorder("");
 	JScrollPane jScrollPane1 = new JScrollPane();		//带滚动条的区域
 	public void ProStorage() {
@@ -27,12 +30,20 @@ public  class ProStorage {
 		} catch (Exception exception) {
 			exception.printStackTrace();
 		}
-
 	}
 	public void jbInit() {
 		setjTable();			//设置表格
 		setstatus();			//设置表格展示区域
-		jMenuBar1.add(Return);	//将父菜单加入菜单栏
+		UIManager.put("MenuItem.font", font);
+		jMenuBar1.add(GrainIn);	//将父菜单加入菜单栏
+		GrainIn. setSelected(true);
+		GrainIn.updateUI();
+		jMenuBar1.add(RiceIn);
+		RiceIn.updateUI();
+		jMenuBar1.add(Variety);
+		Variety.updateUI();
+		jMenuBar1.add(Return);
+		Return.updateUI();
 		statusBar.add(jTable1);
 		Return.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
